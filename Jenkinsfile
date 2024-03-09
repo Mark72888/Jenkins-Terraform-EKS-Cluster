@@ -53,6 +53,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Creating an EKS cluster') {
+            steps {
+                script {
+                    dir('EKS-cluster') {
+                        sh 'terraform apply --auto-aprrove'
+                    }
+                }
+            }
+        }
     }
     
 }
