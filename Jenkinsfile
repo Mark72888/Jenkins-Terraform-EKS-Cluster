@@ -54,11 +54,11 @@ pipeline {
             }
         }
 
-        stage('Creating an EKS cluster') {
-            steps {
-                script {
+        stage('deleting an EKS cluster') {
+           steps {
+             script {
                     dir('EKS-cluster') {
-                        sh 'terraform apply --auto-approve'
+                       sh 'terraform destroy'
                     }
                 }
             }
