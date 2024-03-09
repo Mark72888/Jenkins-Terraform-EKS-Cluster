@@ -17,7 +17,7 @@ pipeline {
         stage('Initializing Terraform'){
             steps{
                 script{
-                    dir('EKS'){
+                    dir('EKS-cluster'){
                         sh 'terraform init'
                     }
                 }
@@ -27,7 +27,7 @@ pipeline {
         stage('Formating Terraform'){
             steps{
                 script{
-                    dir('EKS'){
+                    dir('EKS-cluster'){
                         sh 'terraform fmt'
                     }
                 }
@@ -37,7 +37,7 @@ pipeline {
         stage('Validating Terraform'){
             steps{
                 script{
-                    dir('EKS'){
+                    dir('EKS-cluster'){
                         sh 'terraform validate'
                     }
                 }
@@ -47,7 +47,7 @@ pipeline {
         stage('Review Terraform') {
             steps {
                 script {
-                    dir('EKS') {
+                    dir('EKS-cluster') {
                         sh 'terraform plan'
                     }
                 }
