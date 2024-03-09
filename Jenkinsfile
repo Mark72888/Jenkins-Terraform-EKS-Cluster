@@ -8,9 +8,11 @@ pipeline {
     stages {
         stage('checkout SCM'){
             steps {
-               git branch: 'main', credentialsId: 'github', url: 'https://github.com/Mark72888/Jenkins-Terraform-EKS-Cluster.git'
+                script {
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/Mark72888/Jenkins-Terraform-EKS-Cluster.git']])
             }
         }
+     }
         
         stage('Initializing Terraform'){
             steps{
